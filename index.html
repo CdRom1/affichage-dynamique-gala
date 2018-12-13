@@ -2,71 +2,222 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+
 <style>
+
 body {
-color:white;
-background-color:black;
-background-image:url(fondGalaHorizontal.png);
+  color:white;
+  background-color: black;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.content {
+  background-image: url("fondGalaHorizontal.jpeg");
+  background-size: 90vw 100vh;
+  background-position: top;
+  background-repeat: no-repeat;
+  height: 100vh;
+  padding: 10%;
+  font-family: Helvetica;
+}
+
+table {
+  text-align: center;
+  font-size: 1.3em;
+}
+
+th {
+  font-weight: bolder;
+  padding: 20px;
+}
+
+.dans_x_minutes, .etat_en_cours {
+  font-style: italic;
+
+}
+
+.ligne_vide_degeulasse {
+  height: 100px;
+}
+
+.nom_evenement_en_cours, .nom_prochain_evenement{
+  font-size: 1.5em;
 }
 </style>
+
+
+
+
 </head>
 
   <body>
-
-    <h1>
-      Coucou
-    </h1>
+    <div class="content">
 
 <table style="width:100%">
   <tr class="titres_scenes">
-    <td>Scène 1</td>
-    <td>Animations</td>
+    <th>Scène FSC</th>
+    <th>Scène Larsen</th>
+    <th>Main Stage</th>
+    <th>Animations</th>
   </tr>
-  <tr class="dans_x_minutes">
-    <td id="fsc_ev_prochain_temps_restant">Dans X minutes</td>
-    <td rowspan="2" id="anim_ev_prochain">Prochaines animations</td>
-  </tr>
+
   <tr class="nom_prochain_evenement">
     <td id="fsc_ev_prochain_nom">Nom du prochain év sc1</td>
+    <td id="larsen_ev_prochain_nom">Nom du prochain év sc2</td>
+    <td id="pro_ev_prochain_nom">Nom du prochain év sc3</td>
+    <td rowspan="2" id="anim_ev_prochain">Prochaines animations</td>
+  </tr>
+
+  <tr class="dans_x_minutes">
+    <td id="fsc_ev_prochain_temps_restant">Dans X minutes</td>
+    <td id="larsen_ev_prochain_temps_restant">Dans X minutes</td>
+    <td id="pro_ev_prochain_temps_restant">Dans X minutes</td>
     <!-- Cette cellule a été fusionnée avec anim_ev_prochain -->
   </tr>
+
+  <tr class="ligne_vide_degeulasse">
+
+  </tr>
+
   <tr class="etat_en_cours">
     <td id="fsc_ev_en_cours_etat">En cours</td>
-    <td id="anim_ev_en_cours_etat">Rien</td>
+    <td id="larsen_ev_en_cours_etat">En cours</td>
+    <td id="pro_ev_en_cours_etat">En cours</td>
+    <td id="anim_ev_en_cours_etat">En cours</td>
   </tr>
+
   <tr class="nom_evenement_en_cours">
     <td id="fsc_ev_en_cours_nom">Nom év en cours sc1</td>
+    <td id="larsen_ev_en_cours_nom">Nom év en cours sc2</td>
+    <td id="pro_ev_en_cours_nom">Nom év en cours sc3</td>
     <td id="anim_ev_en_cours_nom">Nom év en cours anim</td>
   </tr>
+
 </table>
+</div>
 
 
 
 <script>
 
 var fsc = [
-{ nom: "premier concert",
-  debut: new Date(2018, 11, 12, 17, 10),
-  fin: new Date(2018, 11, 12, 17, 20),
+{ nom: "Zen'Hit",
+  debut: new Date(2018, 11, 15, 22, 45),
+  fin: new Date(2018, 11, 15, 23, 35),
 },
-{ nom: "deuxième concert",
-  debut: new Date(2018, 11, 12, 17, 20),
-  fin: new Date(2018, 11, 12, 17, 30),
+{ nom: "TED",
+  debut: new Date(2018, 11, 15, 23, 35),
+  fin: new Date(2018, 11, 16, 0, 25),
+},
+{ nom: "Touzö",
+  debut: new Date(2018, 11, 16, 0, 25),
+  fin: new Date(2018, 11, 16, 1, 15),
+},
+{ nom: "Madjer",
+  debut: new Date(2018, 11, 16, 1, 15),
+  fin: new Date(2018, 11, 16, 2, 5),
+},
+{ nom: "Kiki et Cado",
+  debut: new Date(2018, 11, 16, 2, 5),
+  fin: new Date(2018, 11, 16, 2, 55),
+},
+{ nom: "Cactus & Racket",
+  debut: new Date(2018, 11, 16, 2, 55),
+  fin: new Date(2018, 11, 16, 3, 30),
+},
+]
+
+var larsen = [
+{ nom: "R404",
+  debut: new Date(2018, 11, 15, 22, 45),
+  fin: new Date(2018, 11, 15, 23, 15),
+},
+{ nom: "Originals",
+  debut: new Date(2018, 11, 16, 0, 0),
+  fin: new Date(2018, 11, 16, 1, 0),
+},
+{ nom: "Chicken Swing",
+  debut: new Date(2018, 11, 16, 1, 0),
+  fin: new Date(2018, 11, 16, 2, 0),
+},
+{ nom: "Oktopod",
+  debut: new Date(2018, 11, 16, 2, 0),
+  fin: new Date(2018, 11, 16, 3, 30),
+},
+]
+
+var pro = [
+{ nom: "Nawui",
+  debut: new Date(2018, 11, 15, 22, 30),
+  fin: new Date(2018, 11, 15, 23, 20),
+},
+{ nom: "Blow",
+  debut: new Date(2018, 11, 16, 0, 0),
+  fin: new Date(2018, 11, 16, 1, 30),
+},
+{ nom: "Faul&Wad",
+  debut: new Date(2018, 11, 16, 1, 45),
+  fin: new Date(2018, 11, 16, 2, 35),
+},
+{ nom: "DSCNT",
+  debut: new Date(2018, 11, 16, 2, 35),
+  fin: new Date(2018, 11, 16, 3, 25),
+},
+{ nom: "TULUM",
+  debut: new Date(2018, 11, 16, 3, 25),
+  fin: new Date(2018, 11, 16, 4, 15),
 },
 ]
 
 var anim = [
-{ nom: "anim 1a",
-  debut: new Date(2018, 11, 12, 17, 00),
-  fin: new Date(2018, 11, 12, 17, 10),
+{ nom: "Concert Stravaganza BROADWAY",
+  debut: new Date(2018, 11, 15, 21, 0),
+  fin: new Date(2018, 11, 12, 22, 0),
 },
-{ nom: "anim 1b",
-  debut: new Date(2018, 11, 12, 17, 00),
-  fin: new Date(2018, 11, 12, 17, 10),
+{ nom: "Défilé de mode",
+  debut: new Date(2018, 11, 15, 22, 0),
+  fin: new Date(2018, 11, 12, 22, 15),
 },
-{ nom: "anim 2",
-  debut: new Date(2018, 11, 12, 17, 10),
-  fin: new Date(2018, 11, 12, 17, 20),
+{ nom: "Acrockeur",
+  debut: new Date(2018, 11, 15, 22, 30),
+  fin: new Date(2018, 11, 15, 22, 45),
+},
+{ nom: "PIC'N'Rock",
+  debut: new Date(2018, 11, 15, 22, 45),
+  fin: new Date(2018, 11, 15, 23, 0),
+},
+{ nom: "Salsa",
+  debut: new Date(2018, 11, 15, 23, 0),
+  fin: new Date(2018, 11, 15, 23, 20),
+},
+{ nom: "Hypn'UT'ic",
+  debut: new Date(2018, 11, 15, 20, 0),
+  fin: new Date(2018, 11, 15, 23, 15),
+},
+{ nom: "Profit'rôles",
+  debut: new Date(2018, 11, 15, 23, 15),
+  fin: new Date(2018, 11, 15, 23, 45),
+},
+{ nom: "Poker",
+  debut: new Date(2018, 11, 15, 20, 30),
+  fin: new Date(2018, 11, 16, 1, 0),
+},
+{ nom: "Feu d'artifice",
+  debut: new Date(2018, 11, 15, 23, 30),
+  fin: new Date(2018, 11, 15, 23, 45),
+},
+{ nom: "Blind Test",
+  debut: new Date(2018, 11, 15, 20, 0),
+  fin: new Date(2018, 11, 15, 23, 0),
+},
+{ nom: "Piano libre service",
+  debut: new Date(2018, 11, 15, 23, 45),
+  fin: new Date(2018, 11, 15, 3, 0),
 },
 ]
 
@@ -79,16 +230,29 @@ var d = new Date();
 var d15minutes = new Date(d.getTime() + (15 * 60 * 1000));
 
 
-
 var fscEnCours, fscProchain;
+var larsenEnCours, larsenProchain;
+var proEnCours, proProchain;
 var animsEnCours = [];
 var animsProchaines = [];
 
+console.log(fsc[0].debut);
+console.log(d);
 
 //parsage FSC
 fsc.forEach( (ev) => {
   if(d > ev.debut && ev.fin > d ) {fscEnCours = ev;}
   if(d < ev.debut && ev.debut < d15minutes) {fscProchain = ev;}
+})
+
+larsen.forEach( (ev) => {
+  if(d > ev.debut && ev.fin > d ) {larsenEnCours = ev;}
+  if(d < ev.debut && ev.debut < d15minutes) {larsenProchain = ev;}
+})
+
+pro.forEach( (ev) => {
+  if(d > ev.debut && ev.fin > d ) {proEnCours = ev;}
+  if(d < ev.debut && ev.debut < d15minutes) {proProchain = ev;}
 })
 
 //parsage Animations
@@ -99,22 +263,25 @@ anim.forEach( (ev) => {
 
 //Affichage FSC
 affichageScene(fscEnCours,fscProchain,document.getElementById("fsc_ev_en_cours_nom"),document.getElementById("fsc_ev_en_cours_etat"),document.getElementById("fsc_ev_prochain_nom"),document.getElementById("fsc_ev_prochain_temps_restant"))
+affichageScene(larsenEnCours,larsenProchain,document.getElementById("larsen_ev_en_cours_nom"),document.getElementById("larsen_ev_en_cours_etat"),document.getElementById("larsen_ev_prochain_nom"),document.getElementById("larsen_ev_prochain_temps_restant"))
+affichageScene(proEnCours,proProchain,document.getElementById("pro_ev_en_cours_nom"),document.getElementById("pro_ev_en_cours_etat"),document.getElementById("pro_ev_prochain_nom"),document.getElementById("pro_ev_prochain_temps_restant"))
 affichageAnimation(animsEnCours, animsProchaines, document.getElementById("anim_ev_en_cours_nom"),document.getElementById("anim_ev_en_cours_etat"),document.getElementById("anim_ev_prochain"))
 
   setTimeout(alerte, 1000);
 }
 
+
+
 //prend en argument les deux objets d'événement, et les tags HTML dans lesquels il faut output le texte
 function affichageScene(encours, prochain, encours_nom, encours_etat, prochain_nom, prochain_etat) {
 var d = new Date();
   //TODO: remplacer le 'rien' par rien, c'est pas très classe pour le gala
-  encours_nom.innerHTML = encours ? encours.nom : "Rien";
-  encours_etat.innerHTML = encours ? "En cours" : "Rien";
-  prochain_nom.innerHTML = prochain ? prochain.nom : "Rien";
+  encours_nom.innerHTML = encours ? encours.nom : "";
+  prochain_nom.innerHTML = prochain ? prochain.nom : "";
   let delaySeconds = prochain ? Math.floor((prochain.debut.getTime() - d.getTime())/1000) : 0;
   let minutes = Math.floor(delaySeconds / 60);
   let secondes = Math.floor(delaySeconds % 60);
-  prochain_etat.innerHTML = prochain ? "Dans " + deuxChiffres.format(minutes) + " minutes et " + deuxChiffres.format(secondes) + " secondes" : "Rien";
+  prochain_etat.innerHTML = prochain ? "Dans " + deuxChiffres.format(minutes) + " : " + deuxChiffres.format(secondes) + " " : "";
 }
 
 //prend en argument deux array contenant des objets d'événement, et les tags HTML dans lesquels il faut output le texte
@@ -122,11 +289,9 @@ function affichageAnimation(encours, prochain, encours_nom, encours_etat, procha
 var d = new Date();
   //TODO: remplacer le 'rien' par rien, c'est pas très classe pour le gala
   if(encours.length == 0) {
-  encours_nom.innerHTML = "Rien";
-  encours_etat.innerHTML = "Rien";
+  encours_nom.innerHTML = "";
 }
 else {
-  encours_etat.innerHTML = "En cours :";
   let output = "<ul>";
   encours.forEach( (ev) => {
     output += '<li>' + ev.nom +'</li>';
@@ -136,7 +301,7 @@ else {
 }
 
 if(prochain.length == 0) {
-  prochain_cellule.innerHTML = "Rien";
+  prochain_cellule.innerHTML = "";
 }
 else {
   let output = "<ul>";
@@ -144,7 +309,7 @@ else {
    let delaySeconds = Math.floor((ev.debut.getTime() - d.getTime())/1000);
    let minutes = Math.floor(delaySeconds / 60);
    let secondes = Math.floor(delaySeconds % 60);
-   output += "<li>" + ev.nom + "<br/><span class='temps_restant'>dans " + deuxChiffres.format(minutes) + " minutes et " + deuxChiffres.format(secondes) + " secondes</span></li>"
+   output += "<li>" + ev.nom + "<br/><span class='temps_restant'>dans " + deuxChiffres.format(minutes) + " : " + deuxChiffres.format(secondes) + "</span></li>"
  });
  output += "</ul>";
 prochain_cellule.innerHTML = output;
