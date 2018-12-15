@@ -90,6 +90,10 @@ td {
   text-align: center;
 }
 
+.nom_evenement_en_cours_anim {
+  font-size: 1.6em;
+}
+
 .col_fsc, .col_larsen, .col_pro {
   border-right: 1px solid white;
 }
@@ -345,7 +349,7 @@ var d = new Date();
 else {
   let output = "<table class='sub_table'>";
   encours.forEach( (ev) => {
-    output += '<tr><td class="nom_evenement_en_cours" >' + ev.nom +'</td></tr>';
+    output += '<tr><td class="nom_evenement_en_cours nom_evenement_en_cours_anim" >' + ev.nom +'</td></tr>';
   });
   output += "</table>";
   encours_nom.innerHTML = output;
