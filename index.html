@@ -22,7 +22,7 @@ ul {
 
 .content {
   font-family: Helvetica;
-  font-size: 1em;
+  font-size: 1.2em;
   padding-left: 8%;
   padding-right: 8%;
   margin-top: calc(15%);
@@ -43,7 +43,8 @@ ul {
   text-align: center;
   margin-top: 1em;
   margin-bottom: 1em;
-  font-size: 1.2em;
+  font-size: 1.3em;
+  font-variant: small-caps;
 }
 
 td {
@@ -72,8 +73,8 @@ td {
 
 .titres_prochainement, .titres_en_cours {
   text-align: center;
-  font-size: 1.2em;
-    padding-top: 50px;
+  font-size: 0.9em;
+    padding-top: 10px;
 }
 
 .titres_prochainement, .titres_en_cours, .temps_restant {
@@ -86,12 +87,16 @@ td {
 }
 
 .nom_evenement_en_cours, .nom_prochain_evenement, .anim_en_cours_nom{
-  font-size: 2em;
+  font-size: 3em;
   text-align: center;
 }
 
-.nom_evenement_en_cours_anim {
-  font-size: 1.6em;
+.nom_evenement_en_cours_anim, .nom_prochain_evenement_anim {
+  font-size: 1.5em;
+}
+
+.nom_prochain_evenement {
+  font-size: 1.8em;
 }
 
 .col_fsc, .col_larsen, .col_pro {
@@ -163,12 +168,12 @@ td {
 
 var fsc = [
 { nom: "Zen'Hit",
-  debut: new Date(2018, 11, 15, 22, 45),
-  fin: new Date(2018, 11, 15, 23, 35),
+  debut: new Date(2018, 11, 13, 15, 20),
+  fin: new Date(2018, 11, 13, 15, 30),
 },
 { nom: "TED",
-  debut: new Date(2018, 11, 15, 23, 35),
-  fin: new Date(2018, 11, 16, 0, 25),
+  debut: new Date(2018, 11, 13, 15, 30),
+  fin: new Date(2018, 11, 13, 15, 40),
 },
 { nom: "Touzö",
   debut: new Date(2018, 11, 16, 0, 25),
@@ -366,7 +371,7 @@ else {
    let delaySeconds = Math.floor((ev.debut.getTime() - d.getTime())/1000);
    let minutes = Math.floor(delaySeconds / 60);
    let secondes = Math.floor(delaySeconds % 60);
-   output += "<tr><td class='nom_prochain_evenement'>"+ev.nom +"</td><td class='anim_temps_restant temps_restant'>" + deuxChiffres.format(minutes) + " : " + deuxChiffres.format(secondes) + "</td></tr>"
+   output += "<tr><td class='nom_prochain_evenement nom_prochain_evenement_anim'>"+ev.nom +"</td><td class='anim_temps_restant temps_restant'>" + deuxChiffres.format(minutes) + " : " + deuxChiffres.format(secondes) + "</td></tr>"
  });
  output += "</table>";
 prochain_cellule.innerHTML = output;
